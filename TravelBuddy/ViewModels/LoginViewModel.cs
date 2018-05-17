@@ -12,7 +12,7 @@
 		public event PropertyChangedEventHandler PropertyChanged;
 		#endregion
 
-		//private string email;
+		private string email;
 		private string password;
 		//private bool isRunning;
 		//private bool isEnabled;
@@ -20,8 +20,20 @@
 		#region Properties
 		public string Email
 		{
-			get;
-			set;
+			get
+            {
+				return this.email;
+            }
+            set
+            {
+                if (this.email != value)
+                {
+                    this.email = value;
+                    PropertyChanged?.Invoke(
+                        this,
+                        new PropertyChangedEventArgs(nameof(this.Email)));
+                }
+            }
 
 		}
 
