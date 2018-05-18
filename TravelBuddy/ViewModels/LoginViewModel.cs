@@ -1,17 +1,12 @@
 ﻿namespace TravelBuddy.ViewModels
 {
-	using System;
-	using System.ComponentModel;
 	using System.Windows.Input;
 	using GalaSoft.MvvmLight.Command;
 	using Xamarin.Forms;
     
-	public class LoginViewModel : INotifyPropertyChanged
+	public class LoginViewModel : BaseViewModel
     { 
-		#region Events
-		public event PropertyChangedEventHandler PropertyChanged;
-		#endregion
-
+		      
 		#region Attributes
 		private string password;
 		private bool isRunning;
@@ -27,38 +22,14 @@
 
 		public string Password
 		{
-			get
-			{
-				return this.password;
-			}
-			set
-			{
-				if(this.password != value)
-				{
-					this.password = value;
-					PropertyChanged?.Invoke(
-						this,
-						new PropertyChangedEventArgs(nameof(this.Password)));
-				}
-			}
+			get { return this.password; }
+			set { SetValue(ref this.password, value); }
 		}
 
 		public bool IsRunning
 		{
-			get
-            {
-				return this.isRunning;
-            }
-            set
-            {
-				if (this.isRunning != value)
-                {
-					this.isRunning = value;
-                    PropertyChanged?.Invoke(
-                        this,
-						new PropertyChangedEventArgs(nameof(this.IsRunning)));
-                }
-            }
+			get { return this.isRunning; }
+            set { SetValue(ref this.isRunning, value); }
 		}
 
 		public bool IsRemembered
@@ -69,20 +40,8 @@
 
 		public bool IsEnabled
         {
-			get
-            {
-				return this.isEnabled;
-            }
-            set
-            {
-				if (this.isEnabled != value)
-                {
-					this.isEnabled = value;
-                    PropertyChanged?.Invoke(
-                        this,
-						new PropertyChangedEventArgs(nameof(this.IsEnabled)));
-                }
-            }
+			get { return this.isEnabled; }
+			set { SetValue(ref this.isEnabled, value); }
         }
 		#endregion
 
