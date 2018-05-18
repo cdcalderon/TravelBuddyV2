@@ -12,29 +12,17 @@
 		public event PropertyChangedEventHandler PropertyChanged;
 		#endregion
 
-		private string email;
+		#region Attributes
 		private string password;
-		//private bool isRunning;
-		//private bool isEnabled;
+		private bool isRunning;
+		private bool isEnabled;
+		#endregion
 
 		#region Properties
 		public string Email
 		{
-			get
-            {
-				return this.email;
-            }
-            set
-            {
-                if (this.email != value)
-                {
-                    this.email = value;
-                    PropertyChanged?.Invoke(
-                        this,
-                        new PropertyChangedEventArgs(nameof(this.Email)));
-                }
-            }
-
+			get;
+			set;
 		}
 
 		public string Password
@@ -57,8 +45,20 @@
 
 		public bool IsRunning
 		{
-			get;
-			set;
+			get
+            {
+				return this.isRunning;
+            }
+            set
+            {
+				if (this.isRunning != value)
+                {
+					this.isRunning = value;
+                    PropertyChanged?.Invoke(
+                        this,
+						new PropertyChangedEventArgs(nameof(this.IsRunning)));
+                }
+            }
 		}
 
 		public bool IsRemembered
@@ -69,8 +69,20 @@
 
 		public bool IsEnabled
         {
-            get;
-            set;
+			get
+            {
+				return this.isEnabled;
+            }
+            set
+            {
+				if (this.isEnabled != value)
+                {
+					this.isEnabled = value;
+                    PropertyChanged?.Invoke(
+                        this,
+						new PropertyChangedEventArgs(nameof(this.IsEnabled)));
+                }
+            }
         }
 		#endregion
 
@@ -105,7 +117,12 @@
                 return;
             }
 
+			this.IsRunning = true;
+			this.isEnabled = false;
+
 			if(this.Email != "cdcalderon@gmail.com" || this.Password != "12345") {
+				this.IsRunning = false;
+                this.isEnabled = true;
 				await Application.Current.MainPage.DisplayAlert(
                     "Error",
                     "Email or password incorrect.",
@@ -113,6 +130,9 @@
 				this.Password = string.Empty;
                 return;
 			}
+
+			this.IsRunning = false;
+			this.isEnabled = true;
 
 			await Application.Current.MainPage.DisplayAlert(
                     "Ok",
