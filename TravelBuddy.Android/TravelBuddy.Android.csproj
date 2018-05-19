@@ -89,6 +89,10 @@
     <AndroidResource Include="Resources\drawable\twitterlogo.png" />
     <AndroidResource Include="Resources\drawable\instagramlogo.png" />
     <AndroidResource Include="Resources\drawable\facebooklogo.png" />
+    <AndroidResource Include="Resources\drawable\ic_chevron_right.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_chevron_right.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_chevron_right.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_chevron_right.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
