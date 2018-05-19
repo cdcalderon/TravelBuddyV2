@@ -136,8 +136,13 @@
                         Message = result,
                     };
                 }
+				var settings = new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore,
+                    MissingMemberHandling = MissingMemberHandling.Ignore
+                };
 
-                var list = JsonConvert.DeserializeObject<List<T>>(result);
+				var list = JsonConvert.DeserializeObject<List<T>>(result,settings);
                 return new Response
                 {
                     IsSuccess = true,

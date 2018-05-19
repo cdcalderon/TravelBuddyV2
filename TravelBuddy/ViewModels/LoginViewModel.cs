@@ -1,9 +1,8 @@
 ﻿namespace TravelBuddy.ViewModels
 {
-	
 	using System.Windows.Input;
 	using GalaSoft.MvvmLight.Command;
-	using TravelBuddy.Views;
+	using Views;
 	using Xamarin.Forms;
     
 	public class LoginViewModel : BaseViewModel
