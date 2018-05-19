@@ -1,7 +1,9 @@
 ﻿namespace TravelBuddy.ViewModels
 {
+	
 	using System.Windows.Input;
 	using GalaSoft.MvvmLight.Command;
+	using TravelBuddy.Views;
 	using Xamarin.Forms;
     
 	public class LoginViewModel : BaseViewModel
@@ -11,13 +13,14 @@
 		private string password;
 		private bool isRunning;
 		private bool isEnabled;
+		private string email;
 		#endregion
 
 		#region Properties
 		public string Email
 		{
-			get;
-			set;
+			get { return this.email; }
+			set { SetValue(ref this.email, value); }
 		}
 
 		public string Password
@@ -93,11 +96,12 @@
 			this.IsRunning = false;
 			this.isEnabled = true;
 
-			await Application.Current.MainPage.DisplayAlert(
-                    "Ok",
-                    "ohh Yeahhh It worked.",
-                    "Accept");
-            return;
+			this.Email = string.Empty;
+			this.Password = string.Empty;
+
+			MainViewModel.GetInstance().Countries = new CountriesViewModel();
+			await Application.Current.MainPage.Navigation.PushAsync(new CountriesPage());
+
 		}
 		#endregion
 
@@ -106,6 +110,9 @@
 		{
 			this.IsRemembered = true;
 			this.IsEnabled = true;
+
+			this.Email = "cdcalderon@gmail.com";
+			this.Password = "12345";
 		}
 		#endregion
 	}
