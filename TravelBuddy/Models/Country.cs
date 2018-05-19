@@ -1,5 +1,6 @@
 ﻿namespace TravelBuddy.Models
 {
+	using System.Collections.Generic;
 	using Newtonsoft.Json;
     public class Country
     {
